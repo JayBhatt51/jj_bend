@@ -36,13 +36,13 @@ const adminuserconfirm = require('./adminroutes/adminuserconfirm');
 const adminuserincompleted = require('./adminroutes/adminuserincompleted');
 const adminuserPending = require('./adminroutes/adminuserPending');
 const adminuserreviews = require('./adminroutes/adminuserreviews');
-require('dotenv').config();
+// require('dotenv').config();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
 
 mongoose
-  .connect(process.env.MONGODB_URI, {
+  .connect("mongodb+srv://jaybhatt51:jaybhatt51@cluster0.y2m8s6t.mongodb.net/jobjunction?retryWrites=true&w=majority&appName=Cluster0", {
   })
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error(err));
