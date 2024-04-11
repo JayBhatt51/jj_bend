@@ -783,7 +783,7 @@ app.post("/couponavailability", async (req, res) => {
             taskdate: date,
           };
           const innerResponse = await fetch(
-            "http://localhost:4000/inner-request",
+            "https://jj-bend.onrender.com/inner-request",
             {
               method: "POST",
               headers: {
