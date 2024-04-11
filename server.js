@@ -36,13 +36,13 @@ const adminuserconfirm = require('./adminroutes/adminuserconfirm');
 const adminuserincompleted = require('./adminroutes/adminuserincompleted');
 const adminuserPending = require('./adminroutes/adminuserPending');
 const adminuserreviews = require('./adminroutes/adminuserreviews');
-// require('dotenv').config();
+require('dotenv').config();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
 
 mongoose
-  .connect("mongodb+srv://jaybhatt51:jaybhatt51@cluster0.y2m8s6t.mongodb.net/jobjunction?retryWrites=true&w=majority&appName=Cluster0", {
+  .connect(process.env.MONGODB_URI, {
   })
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error(err));
@@ -78,7 +78,7 @@ app.post("/signup", async (req, res) => {
 app.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
-    if(email==='admin@gmail.com' && password==='admin123')
+    if(email=== process.env.ADMIN_ID && password===process.env.ADMIN_PASS)
     return res.status(210).json("adminlogin")
     // Check if user exists
     const user = await User.findOne({ email });
